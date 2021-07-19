@@ -37,23 +37,33 @@
           </q-card-section>
           <q-card-section>
             <q-form class="q-gutter-md">
-              <q-input filled v-model="username" label="Username" lazy-rules />
+              <q-input
+                filled
+                v-model="email"
+                name="email"
+                type="email"
+                label="Username"
+                lazy-rules
+                autocomplete="email"
+              />
 
               <q-input
                 type="password"
                 filled
+                name="password"
                 v-model="password"
                 label="Password"
                 lazy-rules
+                autocomplete="current-password"
               />
 
               <div>
                 <q-btn
                   label="Login"
-                  to="/dashboard"
+
                   type="button"
                   color="primary"
-                  @click="loginNotify"
+                  @click="login"
                 />
 
                 <a
@@ -80,15 +90,29 @@
     export default {
         data() {
             return {
-                username: 'admin',
-                password: 'Admin@CRM'
+              email: '',
+              password: ''
             }
         },
-methods: {
-           loginNotify(){
-             this.$q.notify({
-        message: 'Login Successful',
-      })
+        methods: {
+           login(){
+             this.$store
+               .dispatch('auth/login', {
+                 email: this.email,
+                 password: this.password
+               })
+               .then(() => {
+                 this.$q.notify({
+                   message: 'Login Successful',
+                 })
+                 this.$router.push('/dashboard')
+               })
+               .catch(err => {
+                 console.log(err)
+                 this.$q.notify({
+                   message: 'Login False!',
+                 })
+               })
            }
          },
         mounted() {

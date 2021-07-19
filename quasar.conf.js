@@ -55,6 +55,7 @@ module.exports = function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      htmlFilename: 'index.blade.php',
       scopeHoisting: true,
       vueRouterMode: 'history', // available values: 'hash', 'history'
       showProgress: true,
@@ -73,8 +74,13 @@ module.exports = function (ctx) {
     devServer: {
       https: false,
       port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
     },
+    // devServer: {
+    //   proxy: {
+    //     '/api': 'http://127.0.0.1:8000',
+    //   },
+    // },
 
     // animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
@@ -169,6 +175,9 @@ module.exports = function (ctx) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       }
-    }
+    },
+    indexPath: process.env.NODE_ENV === 'production'
+      ? '../resources/views/index.blade.php'
+      : 'index.html'
   }
 }

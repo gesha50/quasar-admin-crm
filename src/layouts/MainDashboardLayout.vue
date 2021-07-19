@@ -39,7 +39,7 @@
           round
           dense
           icon="fas fa-sign-out-alt"
-          @click="logoutNotify"
+          @click="logout"
           to="/"
         />
       </q-toolbar>
@@ -68,6 +68,7 @@
           <q-scroll-area style="height:100%;">
             <q-list padding>
               <q-item
+                v-if="isLogged"
                 active-class="tab-active"
                 to="/dashboard"
                 exact
@@ -86,7 +87,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/dashboard_v2"
+                to="/dashboard/dashboard_v2"
                 exact
                 class="q-ma-sm navigation-item"
                 clickable
@@ -103,7 +104,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/dashboard_v3"
+                to="/dashboard/v3"
                 exact
                 class="q-ma-sm navigation-item"
                 clickable
@@ -120,7 +121,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/customer_management"
+                to="/dashboard/customer_management"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -136,7 +137,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/change_request"
+                to="/dashboard/change_request"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -152,7 +153,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/sales_invoices"
+                to="/dashboard/sales_invoices"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -168,7 +169,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/quotes"
+                to="/dashboard/quotes"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -184,7 +185,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/transactions"
+                to="/dashboard/transactions"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -200,7 +201,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/employee_salary_list"
+                to="/dashboard/employee_salary_list"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -216,7 +217,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/calendar"
+                to="/dashboard/calendar"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -232,7 +233,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/department"
+                to="/dashboard/department"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -248,7 +249,7 @@
 
               <q-item
                 active-class="tab-active"
-                to="/my_profile"
+                to="/dashboard/my_profile"
                 class="q-ma-sm navigation-item"
                 clickable
                 v-ripple
@@ -282,14 +283,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
       left: false
     };
   },
+  computed: {
+    ...mapGetters({
+      isLogged: 'auth/isLogged',
+    }),
+  },
   methods: {
-    logoutNotify() {
+    logout() {
+      this.$store.dispatch('auth/logout')
       this.$q.notify({
         message: "Logged out"
       });

@@ -1,22 +1,32 @@
 
 const routes = [
-  { path: '/', component: () => import('pages/login.vue') },
-  {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+  { path: '/', component: () => import('layouts/MainLayouts'),
     children: [
-      { path: '/dashboard', component: () => import('pages/dashboard.vue') },
-      { path: '/dashboard_v2', component: () => import('pages/dashboard_v2.vue') },
-      { path: '/dashboard_v3', component: () => import('pages/dashboard_v3.vue') },
-      { path: '/customer_management', component: () => import('pages/customer_management.vue') },
-      { path: '/change_request', component: () => import('pages/change_request.vue') },
-      { path: '/my_profile', component: () => import('pages/my_profile.vue') },
-      { path: '/sales_invoices', component: () => import('pages/sales_invoices.vue') },
-      { path: '/quotes', component: () => import('pages/quotes.vue') },
-      { path: '/transactions', component: () => import('pages/transactions.vue') },
-      { path: '/employee_salary_list', component: () => import('pages/employee_salary_list.vue') },
-      { path: '/calendar', component: () => import('pages/calendar.vue') },
-      { path: '/department', component: () => import('pages/department.vue') },
+      { path: '', component: () => import('pages/site/index') },
+    ]
+  },
+
+  { path: '/login', component: () => import('pages/login.vue') },
+  { path: '/register', component: () => import('pages/register.vue') },
+  {
+    path: '/dashboard',
+    meta: {
+      auth: true
+    },
+    component: () => import('layouts/MainDashboardLayout'),
+    children: [
+      { path: 'dashboard_v2', component: () => import('pages/admin/dashboard_v2.vue') },
+      { path: 'v3', component: () => import('pages/admin/dashboard_v3.vue') },
+      { path: 'customer_management', component: () => import('pages/admin/customer_management.vue') },
+      { path: 'change_request', component: () => import('pages/admin/change_request.vue') },
+      { path: 'my_profile', component: () => import('pages/admin/my_profile.vue') },
+      { path: 'sales_invoices', component: () => import('pages/admin/sales_invoices.vue') },
+      { path: 'quotes', component: () => import('pages/admin/quotes.vue') },
+      { path: 'transactions', component: () => import('pages/admin/transactions.vue') },
+      { path: 'employee_salary_list', component: () => import('pages/admin/employee_salary_list.vue') },
+      { path: 'calendar', component: () => import('pages/admin/calendar.vue') },
+      { path: 'department', component: () => import('pages/admin/department.vue') },
+      { path: '', component: () => import('pages/admin/dashboard.vue')},
     ]
   }
 ]
