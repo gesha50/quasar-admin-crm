@@ -10,3 +10,9 @@ export default {
   name: 'App',
 }
 </script>
+<style lang="scss">
+body {
+  background: $grey-2;
+}
+
+</style>

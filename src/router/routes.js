@@ -3,6 +3,8 @@ const routes = [
   { path: '/', component: () => import('layouts/MainLayouts'),
     children: [
       { path: '', component: () => import('pages/site/index') },
+      { path: 'services', component: () => import('pages/site/services') },
+      { path: 'works', component: () => import('pages/site/works') },
     ]
   },
 

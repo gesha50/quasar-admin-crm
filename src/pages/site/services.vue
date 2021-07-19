@@ -1,10 +1,12 @@
 <template>
-$END$
+  <q-page>
+    ..services..
+  </q-page>
 </template>
 
 <script>
 export default {
-name: "services"
+  name: "services"
 }
 </script>
 
