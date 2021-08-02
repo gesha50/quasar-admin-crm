@@ -11,7 +11,9 @@ export const setUserData = (state, userData) => {
   api.defaults.headers.common.Authorization = `Bearer ${userData.token}`
 }
 
-export function clearUserData () {
+export function clearUserData (state) {
   localStorage.removeItem('user')
+  state.user = null
+  state.isRegister = 0
   location.reload()
 }

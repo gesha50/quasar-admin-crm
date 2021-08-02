@@ -27,7 +27,6 @@ export default function (/* { store, ssrContext } */) {
   })
   Router.beforeEach((to, from, next) => {
     const loggedIn = localStorage.getItem('user')
-
     if (to.matched.some(record => record.meta.auth) && !loggedIn) {
       next('/login')
       return

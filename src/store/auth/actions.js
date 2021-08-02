@@ -20,6 +20,13 @@ export function login ({ commit }, credentials) {
 }
 
 export function logout ({ commit })  {
+  api.post('/api/logout')
+    .then(res => {
+      console.log(res)
+    })
+    .catch(e => {
+      console.log(e)
+    })
   commit('clearUserData')
 }
 

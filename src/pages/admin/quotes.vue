@@ -84,6 +84,7 @@
 
 <script>
     import {exportFile} from "quasar";
+    import {api} from "boot/axios";
 
     function wrapCsvValue(val, formatFn) {
         let formatted = formatFn !== void 0 ? formatFn(val) : val;
@@ -270,8 +271,18 @@
                         icon: "warning"
                     });
                 }
-            }
-        }
+            },
+          test() {
+            api
+              .get('/api/test')
+              .then(({ data }) => {
+                console.log(data)
+              });
+          }
+        },
+      mounted() {
+        this.test()
+      },
     };
 </script>
 <style>

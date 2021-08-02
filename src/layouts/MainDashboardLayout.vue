@@ -267,7 +267,6 @@
         </div>
       </div>
     </q-drawer>
-
     <q-page-container>
       <q-page class="row no-wrap">
         <div class="col">
@@ -284,6 +283,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import {api} from "boot/axios";
 
 export default {
   data() {
@@ -296,9 +296,14 @@ export default {
       isLogged: 'auth/isLogged',
     }),
   },
+  created() {
+    api.defaults.headers.common.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+  },
   methods: {
     logout() {
       this.$store.dispatch('auth/logout')
+    },
+    notifyLogout() {
       this.$q.notify({
         message: "Logged out"
       });
@@ -310,7 +315,7 @@ export default {
 <style>
 .q-drawer {
   /*background-image: url(https://demos.creative-tim.com/vue-material-dashboard/img/sidebar-2.32103624.jpg) !important;*/
-  background-image: url("/statics/images/lake.jpg") !important;
+  /*background-image: url("/statics/images/lake.jpg") !important;*/
   background-size: cover !important;
 }
 

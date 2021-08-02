@@ -1,0 +1,22 @@
+//@import "fonts";
+
+$my_pink: #FF89CC;
+$my_purple: #C989FF;
+$my_purple_2: #8643DC;
+
+.mobile_only {
+  @media (max-width: $breakpoint-xs-max) {
+    display: block;
+  }
+  @media (min-width: $breakpoint-xs-max) {
+    display: none;
+  }
+}
+.desktop_only {
+  @media (max-width: $breakpoint-xs-max) {
+    display: none;
+  }
+  @media (min-width: $breakpoint-xs-max) {
+    display: block;
+  }
+}

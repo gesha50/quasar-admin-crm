@@ -1,44 +1,83 @@
 <template>
-  <q-layout class="container" view="hHh LpR fFf">
-    <q-header class="bg-white text-black container q-pt-lg" height-hint="98">
-      <q-toolbar>
-          <q-avatar class="q-mx-md q-my-sm">
-            <img src="../statics/app-logo-128x128.png">
-          </q-avatar>
-      <q-tabs
-        v-model="tab"
-        class="text-grey-9 q-ml-sm"
-        indicator-color="transparent"
-        active-color="black"
-        active-bg-color="white"
-        shrink
-        stretch
-      >
-        <q-route-tab to="/" label="Главная" />
-        <q-route-tab to="/services" label="Услуги" />
-        <q-route-tab to="/works" label="Работы" />
-      </q-tabs>
-        <q-space></q-space>
-        <q-btn color="white" text-color="primary" round icon="menu" />
-      </q-toolbar>
-    </q-header>
+  <q-layout class="container" view="hHh LpR fff">
+    <top-header
+      @drawer="drawer = !drawer"
+      :menuList="menuList"
+    ></top-header>
+    <q-drawer
+      side="right"
+      v-model="drawer"
+      show-if-above
+      :width="200"
+      :breakpoint="599"
+      bordered
+      class="bg-grey-3 mobile_only"
+    >
+      <q-scroll-area class="fit">
+        <q-list>
+
+          <template v-for="(menuItem, index) in menuList">
+            <q-item clickable :to="menuItem.href" exact v-ripple>
+              <q-item-section avatar>
+                <q-icon :name="menuItem.icon" />
+              </q-item-section>
+              <q-item-section>
+                {{ menuItem.label }}
+              </q-item-section>
+            </q-item>
+            <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
+          </template>
+
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
     <q-page-container>
       <router-view></router-view>
     </q-page-container>
-
-    <q-footer class="bg-white text-grey-9 container">
-      <q-toolbar class="text-center" style="justify-content: center;">
-          Let’s be Friends
-      </q-toolbar>
-    </q-footer>
+    <Footer></Footer>
   </q-layout>
 </template>
 
 <script>
+import TopHeader from "components/header/topHeader";
+import Footer from "components/footer/Footer";
+
+const menuList = [
+  {
+    icon: 'fas fa-home',
+    href: '/',
+    label: 'Home',
+    separator: true
+  },
+  {
+    icon: 'fas fa-code',
+    href: '/services',
+    label: 'Services',
+    separator: false
+  },
+  {
+    icon: 'fas fa-briefcase',
+    href: '/works',
+    label: 'Portfolio',
+    separator: false
+  },
+  {
+    icon: 'fas fa-phone',
+    href: '/contact',
+    label: 'Contact',
+    separator: false
+  },
+]
 export default {
   name: "MainLayouts",
+  components: {
+    TopHeader,
+    Footer,
+  },
   data() {
     return {
+      drawer: false,
+      menuList,
       tab: ''
     }
   },
@@ -46,6 +85,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import "src/assets/scss/app.scss";
+
+.q-page-container {
+  padding-right: 0 !important;
+}
 .container {
   margin: 0 auto;
   background: #fff;

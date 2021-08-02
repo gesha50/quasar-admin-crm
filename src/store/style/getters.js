@@ -1,4 +1,4 @@
-/*
-export function someGetter (state) {
+
+export function getStyle (state) {
+  return state.particleJSParam2
 }
-*/

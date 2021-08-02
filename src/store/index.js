@@ -4,7 +4,7 @@ import createPersistedState from "vuex-persistedstate";
 
 // we first import the module
 import auth from './auth'
-import style from './auth'
+import style from './style'
 
 Vue.use(Vuex)
 
