@@ -1,6 +1,7 @@
 <template>
   <q-header reveal :reveal-offset="10" elevated class="text-black container" height-hint="98">
     <q-toolbar>
+      <q-btn class="mobile_only"  @click="$emit('drawer')" color="white" text-color="primary" round icon="menu" />
       <q-avatar class="q-mx-md q-my-sm">
         <img src="../../statics/app-logo-128x128.png">
       </q-avatar>
@@ -21,7 +22,7 @@
         />
       </q-tabs>
       <q-space></q-space>
-      <q-btn class="mobile_only"  @click="$emit('drawer')" color="white" text-color="primary" round icon="menu" />
+      <q-select  @input="changedLang(lang)" filled v-model="lang" :options="options" />
     </q-toolbar>
   </q-header>
 </template>
@@ -32,8 +33,25 @@ export default {
   props: ['menuList'],
   data() {
     return {
-      tab: ''
+      tab: '',
+      lang: this.$store.getters["style/getLang"],
+      options: [
+        'en-us',
+        'ru',
+      ]
     }
+  },
+  created() {
+    this.$i18n.locale = this.lang
+  },
+  updated() {
+    this.$i18n.locale = this.lang
+  },
+  methods: {
+    changedLang(val) {
+      console.log(val)
+      this.$store.dispatch('style/setLang', val)
+    },
   },
 }
 </script>

@@ -1,4 +1,6 @@
-/*
-export function someAction (context) {
+
+export function setLang ({ commit }, value) {
+  console.log(value)
+  commit('setLang', value)
 }
-*/
+

@@ -1,7 +1,7 @@
 <template>
   <div class="topBlock row items-center">
     <div class="topBlock__left col-5">
-      <div class="topBlock__topText">Hello, I am</div>
+      <div class="topBlock__topText">{{ $t('hello') }}</div>
       <div class="topBlock__name">Gennadiy Sabinin</div>
       <div class="topBlock__works">a freelance web-developer</div>
       <q-btn
