@@ -2,20 +2,18 @@
   <section class="contact column items-start">
     <div class="contact__miniTitle">
       <title-block
-        :title="'Contact Me'"
+        :title="$t('contacts.title')"
       ></title-block>
     </div>
     <header-block
-      :header="'Let me know if you want to talk \n'+
-                'about a potential collaboration.\n'+
-                'I\'m available for freelance work.'"
+      :header="$t('contacts.description')"
       :email="'gs-developer@yandex.ru'"
     ></header-block>
     <div class="contact__body full-width row">
       <q-form class="full-width" @submit="onSubmit" @reset="onReset">
-        <q-input v-model="name" label="What’s your name?" :dense="dense" />
-        <q-input v-model="email" label="Your email" :dense="dense" />
-        <q-input v-model="message" label="Tell me about your project" :dense="dense" />
+        <q-input v-model="name" :label="$t('contacts.inputs.name')" :dense="dense" />
+        <q-input v-model="email" :label="$t('contacts.inputs.email')" :dense="dense" />
+        <q-input v-model="message" :label="$t('contacts.inputs.message')" :dense="dense" />
         <div class="row justify-between items-baseline">
           <div class="row items-baseline col-12 col-sm-5">
             <q-btn
@@ -23,9 +21,9 @@
               class="glossy q-mt-lg q-px-md q-py-xs"
               rounded
               color="deep-purple-8"
-              label="Submit"
+              :label="$t('btn.submit')"
             />
-            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn :label="$t('btn.reset')" type="reset" color="primary" flat class="q-ml-sm" />
           </div>
           <q-file class="col-6 col-md-2 col-sm-3 order-first order-sm-last q-mt-xs-md" standout color="purple-12" v-model="image">
             <template v-slot:prepend>

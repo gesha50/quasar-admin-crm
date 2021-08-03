@@ -2,11 +2,11 @@
 <section class="skills q-mt-xl column items-start">
   <div class="skills__miniTitle">
     <title-block
-      :title="'Skills'"
+      :title="$t('skills.title')"
     ></title-block>
   </div>
   <header-block
-    :header="'I have studied such technologies'"
+    :header="$t('skills.description')"
   ></header-block>
   <div class="skills__body full-width row q-mt-lg">
     <div v-for="img in images" class="col-6 col-sm-3">

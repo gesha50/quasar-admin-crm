@@ -2,7 +2,6 @@
   <q-layout class="container" view="hHh LpR fff">
     <top-header
       @drawer="drawer = !drawer"
-      :menuList="menuList"
     ></top-header>
     <q-drawer
       side="right"
@@ -16,13 +15,13 @@
       <q-scroll-area class="fit">
         <q-list>
 
-          <template v-for="(menuItem, index) in menuList">
+          <template v-for="(menuItem, index) in this.$store.getters['header/getMenu']">
             <q-item clickable :to="menuItem.href" exact v-ripple>
               <q-item-section avatar>
                 <q-icon :name="menuItem.icon" />
               </q-item-section>
               <q-item-section>
-                {{ menuItem.label }}
+                {{ $t(menuItem.label) }}
               </q-item-section>
             </q-item>
             <q-separator :key="'sep' + index"  v-if="menuItem.separator" />
@@ -42,32 +41,6 @@
 import TopHeader from "components/header/topHeader";
 import Footer from "components/footer/Footer";
 
-const menuList = [
-  {
-    icon: 'fas fa-home',
-    href: '/',
-    label: 'Home',
-    separator: true
-  },
-  {
-    icon: 'fas fa-code',
-    href: '/services',
-    label: 'Services',
-    separator: false
-  },
-  {
-    icon: 'fas fa-briefcase',
-    href: '/works',
-    label: 'Portfolio',
-    separator: false
-  },
-  {
-    icon: 'fas fa-phone',
-    href: '/contact',
-    label: 'Contact',
-    separator: false
-  },
-]
 export default {
   name: "MainLayouts",
   components: {
@@ -77,7 +50,6 @@ export default {
   data() {
     return {
       drawer: false,
-      menuList,
       tab: ''
     }
   },

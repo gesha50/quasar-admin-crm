@@ -2,17 +2,17 @@
   <section class="certificates q-mt-xl column items-start">
     <div class="certificates__miniTitle">
       <title-block
-        :title="'Certificates'"
+        :title="$t('certificates.title')"
       ></title-block>
     </div>
     <header-block
-      :header="'I was trained in these directions'"
+      :header="$t('certificates.description')"
     ></header-block>
     <div class="certificates__body full-width row q-mt-lg">
-      <div v-for="img in images" class="col-6 col-sm-3">
+      <div v-for="img in this.$store.getters['certificates/getImages']" class="col-6 col-sm-3">
         <div class="text-center row column q-pa-sm certificatesCard">
           <iframe
-            :src="'../../statics/images/certificates/en/'+img.path"
+            :src="`../../statics/images/certificates/${$i18n.locale}/`+img.path"
             frameBorder="0"
             height="100%"
             width="100%"
@@ -32,18 +32,6 @@ export default {
   components: {
     TitleBlock,
     HeaderBlock,
-  },
-  data() {
-    return {
-      images: [
-        {
-          path: 'algorithms_en.pdf'
-        },
-        {
-          path: 'beginProgram_en.pdf'
-        },
-      ],
-    }
   },
 }
 </script>

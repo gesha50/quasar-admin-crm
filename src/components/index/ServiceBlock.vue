@@ -4,9 +4,9 @@
       <custom-icon
         :icon="item.icon"
       ></custom-icon>
-      <div class="serviceBlock__title q-ml-md">{{item.title}}</div>
+      <div class="serviceBlock__title q-ml-md">{{$t(item.title)}}</div>
     </div>
-    <div class="serviceBlock__description">{{item.description}}</div>
+    <div class="serviceBlock__description">{{$t(item.description)}}</div>
   </div>
 </template>
 

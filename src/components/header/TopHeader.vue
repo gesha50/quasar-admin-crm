@@ -15,10 +15,10 @@
         stretch
       >
         <q-route-tab
-          v-for="(menuItem, index) in menuList"
+          v-for="(menuItem, index) in this.$store.getters['header/getMenu']"
           :key="index"
           :to="menuItem.href"
-          :label="menuItem.label"
+          :label="$t(menuItem.label)"
         />
       </q-tabs>
       <q-space></q-space>
@@ -30,11 +30,10 @@
 <script>
 export default {
   name: "TopHeader",
-  props: ['menuList'],
   data() {
     return {
       tab: '',
-      lang: this.$store.getters["style/getLang"],
+      lang: this.$store.getters["header/getLang"],
       options: [
         'en-us',
         'ru',
@@ -50,7 +49,7 @@ export default {
   methods: {
     changedLang(val) {
       console.log(val)
-      this.$store.dispatch('style/setLang', val)
+      this.$store.dispatch('header/setLang', val)
     },
   },
 }

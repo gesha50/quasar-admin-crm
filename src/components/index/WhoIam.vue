@@ -2,14 +2,14 @@
   <div class="topBlock row items-center">
     <div class="topBlock__left col-5">
       <div class="topBlock__topText">{{ $t('hello') }}</div>
-      <div class="topBlock__name">Gennadiy Sabinin</div>
-      <div class="topBlock__works">a freelance web-developer</div>
+      <div class="topBlock__name">{{ $t('name') }}</div>
+      <div class="topBlock__works">{{ $t('work') }}</div>
       <q-btn
         to="/contact"
         class="glossy q-mt-lg q-px-md q-py-xs"
         rounded
         color="deep-purple-8"
-        label="Let`s talk"
+        :label="$t('btn.talk')"
       />
     </div>
     <div class="topBlock__imageBlock col-7">

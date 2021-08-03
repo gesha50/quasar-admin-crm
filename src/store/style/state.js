@@ -110,6 +110,5 @@ export default function () {
       },
       "retina_detect": true
     },
-    lang: 'en-us',
   }
 }

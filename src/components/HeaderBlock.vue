@@ -4,7 +4,7 @@
       {{header}}
     </div>
     <div v-if="link" class="headerBlock__link row items-baseline">
-      <router-link :to="link">Explore More</router-link>
+      <router-link :to="link">{{ $t('btn.more') }}</router-link>
       <q-icon class="q-ml-sm" name="fas fa-arrow-right"/>
     </div>
     <div v-if="email" class="headerBlock__email">

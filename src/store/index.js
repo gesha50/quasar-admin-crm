@@ -5,6 +5,9 @@ import createPersistedState from "vuex-persistedstate";
 // we first import the module
 import auth from './auth'
 import style from './style'
+import header from './header'
+import services from "./services";
+import certificates from './certificates'
 
 Vue.use(Vuex)
 
@@ -14,6 +17,9 @@ export default function (/* { ssrContext } */) {
       // then we reference it
       auth,
       style,
+      header,
+      services,
+      certificates,
     },
     plugins: [createPersistedState()],
     // enable strict mode (adds overhead!)
@@ -33,11 +39,21 @@ export default function (/* { ssrContext } */) {
       const newAuth = require('./auth').default
       Store.hotUpdate({ modules: { auth: newAuth } })
     })
-  }
-  if (process.env.DEV && module.hot) {
     module.hot.accept(['./style'], () => {
       const newStyle = require('./style').default
       Store.hotUpdate({ modules: { style: newStyle } })
+    })
+    module.hot.accept(['./header'], () => {
+      const newHeader = require('./header').default
+      Store.hotUpdate({ modules: { header: newHeader } })
+    })
+    module.hot.accept(['./services'], () => {
+      const newServices = require('./services').default
+      Store.hotUpdate({ modules: { services: newServices } })
+    })
+    module.hot.accept(['./certificates'], () => {
+      const newCertificates = require('./certificates').default
+      Store.hotUpdate({ modules: { certificates: newCertificates } })
     })
   }
 

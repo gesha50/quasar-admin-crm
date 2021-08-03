@@ -3,11 +3,11 @@
   <div class="portfolio q-mt-xl column items-start">
     <div class="portfolio__miniTitle">
       <title-block
-        :title="'Portfolio'"
+        :title="$t('portfolio.title')"
       ></title-block>
     </div>
     <header-block
-      :header="'All Creative Projects'"
+      :header="$t('portfolio.description')"
       :link="'/works'"
     ></header-block>
     <div class="portfolio__body row">
