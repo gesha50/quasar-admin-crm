@@ -8,6 +8,7 @@ import style from './style'
 import header from './header'
 import services from "./services";
 import certificates from './certificates'
+import portfolio from './portfolio'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
       header,
       services,
       certificates,
+      portfolio,
     },
     plugins: [createPersistedState()],
     // enable strict mode (adds overhead!)
@@ -54,6 +56,10 @@ export default function (/* { ssrContext } */) {
     module.hot.accept(['./certificates'], () => {
       const newCertificates = require('./certificates').default
       Store.hotUpdate({ modules: { certificates: newCertificates } })
+    })
+    module.hot.accept(['./portfolio'], () => {
+      const newPortfolio = require('./portfolio').default
+      Store.hotUpdate({ modules: { portfolio: newPortfolio } })
     })
   }
 

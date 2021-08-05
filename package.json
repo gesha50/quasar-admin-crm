@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
-    "build": "rm -rf ../public/{js,css,fonts,statics} && quasar build"
+    "build": "rm -rf ../public/{js,css,fonts,statics,img} && quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

@@ -31,6 +31,18 @@ export default {
         title: 'mobile app',
         description: 'the software intended for work on smartphones, tablets and other mobile devices, developed for a concrete platform',
       },
+      setting: {
+        title: 'site repair',
+        description: 'The site constantly demands improvements and continuous updating. Often mistakes come to light during the work or owing to site breaking.',
+      },
+      fast: {
+        title: 'Fast site',
+        description: 'If the site is loaded more than 3 seconds it it is considered a bad form. Therefore it is necessary to improve site work by means of simplification of pictures, a caching, the correct writing of a code etc.',
+      },
+      design: {
+        title: 'Individual design',
+        description: 'It is often necessary to use not something sample, but unique. I will be glad to work over a unique type of a site. It is always open for an embodiment of new ideas',
+      },
     }
   },
   portfolio: {

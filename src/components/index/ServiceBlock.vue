@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 col-md-4 q-pa-md serviceBlock">
+  <div class="col-12 col-sm-6 col-md-4 q-pa-md serviceBlock">
     <div class="row items-center">
       <custom-icon
         :icon="item.icon"
@@ -24,9 +24,12 @@ export default {
 
 <style lang="scss">
 .serviceBlock {
+  & div {
+    flex-wrap: nowrap;
+  }
   &__title {
     font-style: normal;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 24px;
   }
   &__description {

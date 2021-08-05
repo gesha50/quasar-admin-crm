@@ -6,6 +6,7 @@ const routes = [
       { path: 'services', component: () => import('pages/site/services') },
       { path: 'works', component: () => import('pages/site/works') },
       { path: 'contact', component: () => import('pages/site/contact') },
+      { path: 'certificates', component: () => import('pages/site/certificates') },
     ]
   },
 

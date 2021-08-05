@@ -7,11 +7,11 @@
     </div>
     <header-block
       :header="$t('service.description')"
-      :link="'/services'"
+      :link="link"
     ></header-block>
     <div class="services full-width items-start row justify-around">
       <service-block
-        v-for="(item, i) in this.$store.getters['services/getServices']" :key="i"
+        v-for="(item, i) in servicesObj" :key="i"
         :item="item"
       ></service-block>
     </div>
@@ -24,11 +24,7 @@ import ServiceBlock from "components/index/ServiceBlock";
 import HeaderBlock from "components/HeaderBlock";
 
 export default {
-  data() {
-    return {
-
-    }
-  },
+  props: ['link', 'servicesObj'],
   name: "Services",
   components: {
     TitleBlock,

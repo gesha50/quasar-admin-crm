@@ -7,16 +7,16 @@
     </div>
     <header-block
       :header="$t('certificates.description')"
+      :link="link"
     ></header-block>
     <div class="certificates__body full-width row q-mt-lg">
-      <div v-for="img in this.$store.getters['certificates/getImages']" class="col-6 col-sm-3">
-        <div class="text-center row column q-pa-sm certificatesCard">
-          <iframe
+      <div v-for="img in certificates" class="col-6 col-sm-3">
+        <div class="text-center row column certificatesCard">
+          <q-img
             :src="`../../statics/images/certificates/${$i18n.locale}/`+img.path"
-            frameBorder="0"
-            height="100%"
-            width="100%"
-          ></iframe>
+            :ratio="1"
+            contain
+          />
         </div>
         </div>
       </div>
@@ -29,6 +29,7 @@ import HeaderBlock from "components/HeaderBlock";
 
 export default {
   name: "Certificates",
+  props: ['link', 'certificates'],
   components: {
     TitleBlock,
     HeaderBlock,
@@ -36,8 +37,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.certificatesCard {
-  height: 197px;
+<style lang="scss" scoped>
+.q-img {
+  transition: 1s;
+}
+.q-img:hover {
+  transform: scale(2, 2);
+  z-index: 1;
 }
 </style>

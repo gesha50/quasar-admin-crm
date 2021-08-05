@@ -1,10 +1,19 @@
 <template>
   <q-page padding>
     <WhoIam></WhoIam>
-    <services></services>
-    <portfolio></portfolio>
+    <services
+      :link="'/services'"
+      :services-obj="this.$store.getters['services/getServices'].slice(0,3)"
+    ></services>
+    <portfolio
+      :portfolio-images="this.$store.getters['portfolio/getPortfolio'].slice(0,2)"
+      :link="'/works'"
+    ></portfolio>
     <skills></skills>
-    <certificates></certificates>
+    <certificates
+      :certificates="this.$store.getters['certificates/getImages'].slice(0,4)"
+      :link="'/certificates'"
+    ></certificates>
     <contact></contact>
   </q-page>
 </template>

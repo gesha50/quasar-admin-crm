@@ -8,14 +8,19 @@
     </div>
     <header-block
       :header="$t('portfolio.description')"
-      :link="'/works'"
+      :link="link"
     ></header-block>
-    <div class="portfolio__body row">
-      <div class="col-12 col-sm-6">
-        <img class="full-width"  src="../../statics/images/portfolio_1.png" alt="">
-      </div>
-      <div class="col-12 col-sm-6">
-        <img class="full-width" src="../../statics/images/portfolio_2.png" alt="">
+    <div class="portfolio__body row full-width">
+      <div
+        v-for="(image, i) in portfolioImages"
+        :key="i"
+        class="col-12 col-sm-6">
+        <q-img
+          img-class="q-ma-sm portfolioImg"
+          :ratio="4/3"
+          :src="`../../statics/images/portfolio/${image.path}`"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -28,6 +33,7 @@ import HeaderBlock from "components/HeaderBlock";
 
 export default {
   name: "Portfolio",
+  props: ['link', 'portfolioImages'],
   components: {
     TitleBlock,
     HeaderBlock,
@@ -35,7 +41,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+.portfolioImg {
+  border-radius: 10px;
+  background-position: 0 0 !important;
+}
 .shadowBlock {
   box-shadow: 4px 0px 100px 100px rgba(251, 242, 252, 1);
 }
