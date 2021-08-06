@@ -3,7 +3,7 @@
     <q-toolbar>
       <q-btn class="mobile_only"  @click="$emit('drawer')" color="white" text-color="primary" round icon="menu" />
       <q-avatar class="q-mx-md q-my-sm">
-        <img src="../../statics/app-logo-128x128.png">
+        <img src="../../statics/logo.png">
       </q-avatar>
       <q-tabs
         v-model="tab"

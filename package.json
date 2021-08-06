@@ -9,11 +9,11 @@
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
+    "icons": "icongenie generate -i src/statics/logo.png --skip-trim --theme-color 212121",
     "build": "rm -rf ../public/{js,css,fonts,statics,img} && quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "@vue/cli-shared-utils": "^4.5.13",
     "@vue/composition-api": "^1.0.3",
     "apexcharts": "^3.24.0",
     "axios": "^0.21.1",
