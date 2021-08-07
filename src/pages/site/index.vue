@@ -1,5 +1,7 @@
 <template>
   <q-page padding>
+    <q-btn label="click" @click="socketsTest" />
+    {{message}}
     <WhoIam></WhoIam>
     <services
       :link="'/services'"
@@ -25,9 +27,42 @@ import Portfolio from "components/index/Portfolio";
 import Contact from "components/index/Contact";
 import Skills from "components/index/Skills";
 import Certificates from "components/index/Certificates";
+import { io } from "socket.io-client";
 
+const socket = io("http://localhost:3001")
 export default {
   name: "index",
+  data() {
+    return {
+      message: [],
+    }
+  },
+  methods: {
+    socketsTest() {
+      socket.emit('socketsTest', 'Hi I`m socketsTest')
+    }
+  },
+ beforeCreate() {
+   console.log(socket)
+   socket.on("connect", () => {
+     // either with send()
+     socket.send("Hello!");
+
+     // or with emit() and custom event names
+     socket.emit("salutations", "Hello!", { "mr": "john" }, Uint8Array.from([1, 2, 3, 4]));
+   });
+
+// handle the event sent with socket.send()
+   socket.on("message", data => {
+     console.log(data);
+     this.message.push(data)
+   });
+
+// handle the event sent with socket.emit()
+   socket.on("greetings", (elem1) => {
+     console.log(elem1);
+   });
+ },
   components: {
     WhoIam,
     Services,

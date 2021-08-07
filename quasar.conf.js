@@ -7,7 +7,9 @@ module.exports = function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
-      'i18n'
+      'i18n',
+      'vue-socket.io',
+      'socket.io-client',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
