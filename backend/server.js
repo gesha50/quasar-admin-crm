@@ -28,10 +28,9 @@ io.on("connection", socket => {
   socket.on("salutations", (elem1, elem2, elem3) => {
     console.log(elem1, elem2, elem3);
   });
-  socket.on('socketsTest', text => {
-    socket.emit("message", text);
-    socket.broadcast.emit("message", text);
-
+  socket.on('counterChange', counter => {
+    socket.emit("message", counter);
+    socket.broadcast.emit("message", counter);
   })
 });
 

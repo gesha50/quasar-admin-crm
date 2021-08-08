@@ -1,7 +1,8 @@
 <template>
   <q-page padding>
-    <q-btn label="click" @click="socketsTest" />
-    {{message}}
+    <q-btn label="+" @click="inc" />
+    {{counter}}
+    <q-btn label="-" @click="dec" />
     <WhoIam></WhoIam>
     <services
       :link="'/services'"
@@ -34,13 +35,16 @@ export default {
   name: "index",
   data() {
     return {
-      message: [],
+      counter: this.$q.localStorage.getItem('counter'),
     }
   },
   methods: {
-    socketsTest() {
-      socket.emit('socketsTest', 'Hi I`m socketsTest')
-    }
+    inc() {
+      socket.emit('counterChange', ++this.counter)
+    },
+    dec() {
+      socket.emit('counterChange', --this.counter)
+    },
   },
  beforeCreate() {
    console.log(socket)
@@ -55,7 +59,9 @@ export default {
 // handle the event sent with socket.send()
    socket.on("message", data => {
      console.log(data);
-     this.message.push(data)
+     this.$q.localStorage.set('counter', data)
+     this.counter = this.$q.localStorage.getItem('counter')
+     // this.counter = data
    });
 
 // handle the event sent with socket.emit()
