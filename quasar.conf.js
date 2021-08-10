@@ -9,7 +9,7 @@ module.exports = function (ctx) {
     boot: [
       'i18n',
       'vue-socket.io',
-      'socket.io-client',
+      {path: 'vue-socket.io', server: false},
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
